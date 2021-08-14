@@ -1,31 +1,23 @@
-
+import React, { Component } from 'react';
 import './App.css';
+import CandyList from "./CandyList"
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <h1>Candy Shop!</h1>
-      </header>
-      <main>
-        <section>
-          <h2>Candies</h2>
-          <ul>
-            <li>
-              <div>
-                <p>Skittles, made in United States</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p>Snickers, made in United States</p>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </main>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <div className="App">
+        <header>
+          <h1>Candy Shop!</h1>
+        </header>
+        <main>
+          <section>
+            <h2>Candies</h2>
+            <CandyList />
+          </section>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
