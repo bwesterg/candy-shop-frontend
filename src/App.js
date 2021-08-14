@@ -3,6 +3,19 @@ import './App.css';
 import CandyList from "./CandyList"
 
 class App extends Component {
+  state = {
+    candies: []
+  }
+
+  componentDidMount(){
+    const url = "http://localhost:3000/candies/"
+    fetch(url)
+      .then(response => response.json())
+      .then(candies => {
+        this.setState({ candies })
+      })
+  }
+
   render(){
     return (
       <div className="App">
@@ -12,7 +25,9 @@ class App extends Component {
         <main>
           <section>
             <h2>Candies</h2>
-            <CandyList />
+            <CandyList 
+              candies={this.state.candies} 
+            />
           </section>
         </main>
       </div>
