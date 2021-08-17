@@ -4,7 +4,13 @@ import CandyList from "./CandyList"
 
 class App extends Component {
   state = {
-    candies: []
+    candies: [],
+    newCandy: {
+      name: "",
+      origin: "",
+      price: 1,
+      image: "",
+    }
   }
 
   componentDidMount(){
@@ -14,6 +20,42 @@ class App extends Component {
       .then(candies => {
         this.setState({ candies })
       })
+  }
+
+  handleNameChange = event => {
+    this.setState({
+      newCandy: {
+        ...this.state.newCandy,
+        name: event.target.value
+      }
+    })
+  }
+
+  handleOriginChange = (e) => {
+    this.setState({
+      newCandy: {
+        ...this.state.newCandy,
+        origin: e.target.value
+      }
+    })
+  }
+
+  handlePriceChange = (e) => {
+    this.setState({
+      newCandy: {
+        ...this.state.newCandy,
+        price: e.target.value
+      }
+    })
+  }
+
+  handleImageChange = (e) => {
+    this.setState({
+      newCandy: {
+        ...this.state.newCandy,
+        image: e.target.value
+      }
+    })
   }
 
   render(){
@@ -28,6 +70,41 @@ class App extends Component {
             <CandyList 
               candies={this.state.candies} 
             />
+          </section>
+          <section className="add-candy">
+            <h2>Add a Candy</h2>
+              <form>
+                <input 
+                  type="text" 
+                  placeholder="name" 
+                  value={this.state.newCandy.name} 
+                  onChange={this.handleNameChange}
+                />
+                <input 
+                  type="text" 
+                  placeholder="origin" 
+                  value={this.state.newCandy.origin} 
+                  onChange={this.handleOriginChange}
+                />
+                <input 
+                  type="number" 
+                  placeholder="price" 
+                  min="0.1" 
+                  max="10" 
+                  value={this.state.newCandy.price} 
+                  onChange={this.handlePriceChange}
+                />
+                <input 
+                  type="text" 
+                  placeholder="image link" 
+                  value={this.state.newCandy.image} 
+                  onChange={this.handleImageChange}
+                />
+                <input 
+                  type="submit" 
+                  value="Add Candy" 
+                />
+              </form>
           </section>
         </main>
       </div>
