@@ -10,6 +10,7 @@ export default function CandyList(props){
             <CandyListing 
                 name={candy.name} 
                 origin={candy.origin} 
+                image={candy.image}
             />
         </li>
     })

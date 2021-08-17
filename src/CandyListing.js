@@ -3,6 +3,9 @@ import "./CandyListing.css";
 
 export default function CandyListing(props) {
     return(
-        <p>{props.name} made in {props.origin}</p>
+            <li className="candy-item">
+                {props.name} made in {props.origin}
+                <img src={props.image} alt={props.name} />
+            </li>
     )
 }
