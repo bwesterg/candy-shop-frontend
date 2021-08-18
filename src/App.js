@@ -31,29 +31,29 @@ class App extends Component {
     })
   }
 
-  handleOriginChange = (e) => {
+  handleOriginChange = (event) => {
     this.setState({
       newCandy: {
         ...this.state.newCandy,
-        origin: e.target.value
+        origin: event.target.value
       }
     })
   }
 
-  handlePriceChange = (e) => {
+  handlePriceChange = (event) => {
     this.setState({
       newCandy: {
         ...this.state.newCandy,
-        price: e.target.value
+        price: event.target.value
       }
     })
   }
 
-  handleImageChange = (e) => {
+  handleImageChange = (event) => {
     this.setState({
       newCandy: {
         ...this.state.newCandy,
-        image: e.target.value
+        image: event.target.value
       }
     })
   }
