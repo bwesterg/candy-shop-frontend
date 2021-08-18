@@ -1,6 +1,5 @@
 import React from "react";
 import "./CandyList.css";
-
 import CandyListing from "./CandyListing";
 
 export default function CandyList(props){
