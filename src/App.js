@@ -22,40 +22,46 @@ class App extends Component {
       })
   }
 
-  handleNameChange = event => {
-    this.setState({
-      newCandy: {
-        ...this.state.newCandy,
-        name: event.target.value
-      }
-    })
-  }
+  // handleNameChange = (event) => {
+  //   this.setState({
+  //     newCandy: {
+  //       ...this.state.newCandy,
+  //       name: event.target.value
+  //     }
+  //   })
+  // }
 
-  handleOriginChange = (event) => {
-    this.setState({
-      newCandy: {
-        ...this.state.newCandy,
-        origin: event.target.value
-      }
-    })
-  }
+  // handleOriginChange = (event) => {
+  //   this.setState({
+  //     newCandy: {
+  //       ...this.state.newCandy,
+  //       origin: event.target.value
+  //     }
+  //   })
+  // }
 
-  handlePriceChange = (event) => {
-    this.setState({
-      newCandy: {
-        ...this.state.newCandy,
-        price: event.target.value
-      }
-    })
-  }
+  // handlePriceChange = (event) => {
+  //   this.setState({
+  //     newCandy: {
+  //       ...this.state.newCandy,
+  //       price: event.target.value
+  //     }
+  //   })
+  // }
 
-  handleImageChange = (event) => {
-    this.setState({
-      newCandy: {
-        ...this.state.newCandy,
-        image: event.target.value
-      }
-    })
+  // handleImageChange = (event) => {
+  //   this.setState({
+  //     newCandy: {
+  //       ...this.state.newCandy,
+  //       image: event.target.value
+  //     }
+  //   })
+  // }
+
+  handleChange = property => event => {
+    const newCandy = this.state.newCandy
+    newCandy[property] = event.target.value
+    this.setState({ newCandy })
   }
 
   render(){
@@ -78,13 +84,13 @@ class App extends Component {
                   type="text" 
                   placeholder="name" 
                   value={this.state.newCandy.name} 
-                  onChange={this.handleNameChange}
+                  onChange={this.handleChange("name")}
                 />
                 <input 
                   type="text" 
                   placeholder="origin" 
                   value={this.state.newCandy.origin} 
-                  onChange={this.handleOriginChange}
+                  onChange={this.handleChange("origin")}
                 />
                 <input 
                   type="number" 
@@ -92,13 +98,13 @@ class App extends Component {
                   min="0.1" 
                   max="10" 
                   value={this.state.newCandy.price} 
-                  onChange={this.handlePriceChange}
+                  onChange={this.handleChange("price")}
                 />
                 <input 
                   type="text" 
                   placeholder="image link" 
                   value={this.state.newCandy.image} 
-                  onChange={this.handleImageChange}
+                  onChange={this.handleChange("image")}
                 />
                 <input 
                   type="submit" 
