@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import CandyList from "./CandyList"
 
+const BASE_URL = "http://localhost:3000"
+
 class App extends Component {
   state = {
     candies: [],
@@ -14,7 +16,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const url = "http://localhost:3000/candies/"
+    const url = `${BASE_URL}/candies`
+
     fetch(url)
       .then(response => response.json())
       .then(candies => {
@@ -22,46 +25,35 @@ class App extends Component {
       })
   }
 
-  // handleNameChange = (event) => {
-  //   this.setState({
-  //     newCandy: {
-  //       ...this.state.newCandy,
-  //       name: event.target.value
-  //     }
-  //   })
-  // }
-
-  // handleOriginChange = (event) => {
-  //   this.setState({
-  //     newCandy: {
-  //       ...this.state.newCandy,
-  //       origin: event.target.value
-  //     }
-  //   })
-  // }
-
-  // handlePriceChange = (event) => {
-  //   this.setState({
-  //     newCandy: {
-  //       ...this.state.newCandy,
-  //       price: event.target.value
-  //     }
-  //   })
-  // }
-
-  // handleImageChange = (event) => {
-  //   this.setState({
-  //     newCandy: {
-  //       ...this.state.newCandy,
-  //       image: event.target.value
-  //     }
-  //   })
-  // }
 
   handleChange = property => event => {
     const newCandy = this.state.newCandy
     newCandy[property] = event.target.value
     this.setState({ newCandy })
+  }
+
+  addCandy = event => {
+    event.preventDefault()
+
+    const { name, origin, price, image } = this.state.newCandy
+    fetch(`${BASE_URL}/candies`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, origin, price, image })
+    }).then(response => response.json())
+    .then(candy => {
+      this.setState({
+        candies: [...this.state.candies, candy],
+        newCandy: {
+          name: "",
+          origin: "",
+          price: 0.00,
+          image: ""
+        }
+      })
+    })
   }
 
   render(){
@@ -79,7 +71,7 @@ class App extends Component {
           </section>
           <section className="add-candy">
             <h2>Add a Candy</h2>
-              <form>
+              <form onSubmit={this.addCandy}>
                 <input 
                   type="text" 
                   placeholder="name" 
