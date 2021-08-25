@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import CandyList from "./CandyList"
 
 const BASE_URL = "http://localhost:3000"
