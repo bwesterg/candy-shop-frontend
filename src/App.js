@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddNewCandy from './AddNewCandy';
+import AddNewCandy from "./AddNewCandy";
 import './App.css';
 
 import CandyList from "./CandyList"
@@ -21,12 +21,12 @@ class App extends Component {
   }
 
   addCandy = candy => {
-    fetch(`${BASE_URL}/candies`, {
+    fetch("http://127.0.0.1:3000/candies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: json.stringify(candy)
+      body: JSON.stringify(candy)
     }).then(response => response.json())
     .then(candy => {
       this.setState({
