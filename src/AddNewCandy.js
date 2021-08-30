@@ -1,6 +1,7 @@
 import React, { Component } from "react"
+import "./AddNewCandy.css"
 
-export default class AddNewCandy {
+export default class AddNewCandy extends Component {
 
     state = {
         newCandy: {

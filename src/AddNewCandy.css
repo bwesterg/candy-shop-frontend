@@ -1,0 +1,12 @@
+.add-candy form {
+    width: 300px;
+    font-family: Roboto, sans-serif;
+}
+
+.add-candy input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: Roboto, sans-serif;
+}
