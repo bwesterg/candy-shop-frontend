@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import CandyList from "./CandyList"
+
 import AddNewCandy from "./AddNewCandy";
 import './App.css';
 
-import CandyList from "./CandyList"
 
 const BASE_URL = "http://localhost:3000"
 
 class App extends Component {
   state = {
     candies: [],
+    isAddNewCandyShowing: false,
   }
 
   componentDidMount(){
@@ -35,6 +37,12 @@ class App extends Component {
     })
   }
 
+  toggleAddNewCandy = () => {
+    this.setState({
+      isAddNewCandyShowing: !this.state.isAddNewCandyShowing
+    })
+  }
+
   render(){
     return (
       <div className="App">
@@ -48,7 +56,14 @@ class App extends Component {
               candies={this.state.candies} 
             />
           </section>
-          <AddNewCandy addCandy={this.addCandy} />
+          <button onClick={this.toggleAddNewCandy}>Click to add a candy</button>
+          {
+            this.state.isAddNewCandyShowing
+              ? <AddNewCandy addCandy={this.addCandy} />
+              : null
+          }
+          
+          
         </main>
       </div>
     );
