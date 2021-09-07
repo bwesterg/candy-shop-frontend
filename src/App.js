@@ -56,7 +56,13 @@ class App extends Component {
               candies={this.state.candies} 
             />
           </section>
-          <button onClick={this.toggleAddNewCandy}>Click to add a candy</button>
+          <button onClick={this.toggleAddNewCandy}>
+            {
+              this.state.isAddNewCandyShowing 
+                ? "Close New Candy Form" 
+                : "Add New Candy"
+            }
+          </button>
           {
             this.state.isAddNewCandyShowing
               ? <AddNewCandy addCandy={this.addCandy} />
